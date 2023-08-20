@@ -15,6 +15,7 @@ In order to run a C Program on an hardware chip we need to follow the following 
 * This assembly language program is further converted into a machine language (binary) program.
 * This RISCV specifications need to be implemented using a Hardware Descriptive Language (HDL) and an RTL is generated
 * The RTL is then intgrated with the hardware and the required output is generated.
-  ![App Screenshot](https://postimg.cc/sBk9rvfG)
+* 
+[![Screenshot-from-2023-08-20-21-11-59.png](https://i.postimg.cc/4xwtTFSL/Screenshot-from-2023-08-20-21-11-59.png)](https://postimg.cc/nXjM4TZB)
 
 </details>
