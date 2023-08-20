@@ -26,4 +26,40 @@ Compiler converts the C program to assembly level program which consists of inst
 
 The instruction set is taken into account and a corresponding HDL code is written for it which when synthesized gives us a Gate Level RTL netlist, the physical design implementation of the netlist is created which gives us the layout of the hardware. (PART 2 OF THE COURSE)
 
+## Lecture 4
+
+### C program to find sum of n natural numbers:
+```#include<stdio.h>
+
+int main() 
+{
+	int i, sum=0, n=15;
+	for (i=1 ; i <=n; ++i)
+	{
+		sum +=i;
+	}
+	printf("sum of numbers from 1 to %d = %d\n", n, sum);
+	return 0;
+}
+
+```
+### RESULT : 
+[![Screenshot-from-2023-08-20-22-27-51.png](https://i.postimg.cc/NF6vq2B1/Screenshot-from-2023-08-20-22-27-51.png)](https://postimg.cc/64pmC373)
+
+## Lecture 5
+
+For compiling our C program using a RISC V GCC compiler, we will use the following command on the terminal. 
+
+```riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -o sum1ton.o sum1ton.c```
+
+lp => long pointer
+march => the architecture to be used which in this case is risc v 64 
+
+In order to find the assembly level code for our C program we will run the following command on the terminal.
+
+```riscv64-unknown-elf-objdump -d sum1ton.o | less```
+
+we will then find main from the bunch of hexadecimal code.
+
+
 </details>
