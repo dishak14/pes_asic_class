@@ -196,3 +196,15 @@ return 0;
 [![Screenshot-from-2023-08-21-21-59-12.png](https://i.postimg.cc/3xv9cQqQ/Screenshot-from-2023-08-21-21-59-12.png)](https://postimg.cc/qNp8NS01)
 
 </details>
+
+<details> <summary> Day 2</summary>
+
+## Lecture 10:
+
+In order to write an application software we need to write a program using standard libraries, the interface between these two is called API (application program interface). The interface between the operating system and the assembly level code is called as ISA ( instruction set architecture). In order for the user to access this assembly level code directly we use system calles this system call is called APPLICATION BINARY INTERFACE (ABI).
+
+ABI accesses the system via registers.
+
+IN riscv32 there are 32, 32 bit registers and in risv64 there are 32, 64 bit registers.
+
+</details>
