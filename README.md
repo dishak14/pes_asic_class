@@ -119,8 +119,14 @@ The next command is (addi sp, sp, -16) to notice the changes in the value stored
 
 (-16) is in decimal form which when converted to hexadecimal form gives (-10), we notice a difference of 10 in the addresss stored in stack pointer before and after the exectuion of the instruction further proving our point.
 
+## Lecture 7
 
+Humans understand decimal numbers and computers understand binary numbers, we need an interface or technique to convert decimal numbers to binary and vice versa. 
 
+Basic RISC V keywords :
+* double word (dw) : 64 bit binary values
+* word (w) : 32 bit binary values
+* byte (b) : 8 bit binary values
 
 
 
