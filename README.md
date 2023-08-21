@@ -6,7 +6,7 @@ This repository contains all the notes, lab work and assignments for the course 
 This repo will be divided into different days of the course which will consist of the important points of the lecture as well as the lab work.
 
 <details> <summary>
-  DAY 1
+  Introduction
 </summary>
   
   ## Lecture 1
@@ -26,6 +26,12 @@ Compiler converts the C program to assembly level program which consists of inst
 
 The instruction set is taken into account and a corresponding HDL code is written for it which when synthesized gives us a Gate Level RTL netlist, the physical design implementation of the netlist is created which gives us the layout of the hardware. (PART 2 OF THE COURSE)
 
+</details>
+
+<details><summary> 
+	Day 1
+</summary>
+	
 ## Lecture 4
 
 ### C program to find sum of n natural numbers:
@@ -78,6 +84,41 @@ Just as we did before, we need to find the assembly level code for our program f
 We notice that there are 12 instructions in the main branch.
 
 Hence, we can conclude that using Ofast instead of O1 reduces the number of instructions generated.
+
+## Lecture 6
+
+To run the C program on a RISC V compiler we use enter the following command on the terminal.
+
+```spike pk sum1ton.o```
+
+[![Screenshot-from-2023-08-21-15-49-41.png](https://i.postimg.cc/tJrNRHR9/Screenshot-from-2023-08-21-15-49-41.png)](https://postimg.cc/rRrrg3tH)
+
+In the above screenshot, we have run the C program using both gcc compiler as well as RISC V compiler and we can conclude that we get the same result in both the cases.
+
+In order to debug in spike we use the command :
+
+```spike -d pk sum1ton.o```
+
+If we want our Program Counter to run till a certain instruction at 100b0 after which we want to run it manually we run the following command 
+
+```until pc 0 100b0```
+
+The instruction at 100b(lui a2,0x1) will change the value at register a2. The following screenshot shows the value in reg a2 before and after the execution of the instruction at the address 100b0.
+
+[![Screenshot-from-2023-08-21-16-07-10.png](https://i.postimg.cc/KvsvBc0t/Screenshot-from-2023-08-21-16-07-10.png)](https://postimg.cc/dLrYKFP0)
+
+Hence, we can say that the value in register a2 is changed.
+
+Similarly if we run the next command we load an immediate value of 21 into the register a0 ( lui a0,0x21)
+
+[![Screenshot-from-2023-08-21-16-11-17.png](https://i.postimg.cc/DyYL0TsM/Screenshot-from-2023-08-21-16-11-17.png)](https://postimg.cc/ykckp2Lm)
+
+The next command is (addi sp, sp, -16) to notice the changes in the value stored in the stack pointer (sp) we will first find the value in the stack pointer before execution of the instruction and then again find the value in it after the exectution of the instruction.
+
+[![Screenshot-from-2023-08-21-16-17-24.png](https://i.postimg.cc/qB2QYgPx/Screenshot-from-2023-08-21-16-17-24.png)](https://postimg.cc/6T5d4658)
+
+(-16) is in decimal form which when converted to hexadecimal form gives (-10), we notice a difference of 10 in the addresss stored in stack pointer before and after the exectuion of the instruction further proving our point.
+
 
 
 
