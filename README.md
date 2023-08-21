@@ -61,5 +61,26 @@ In order to find the assembly level code for our C program we will run the follo
 
 we will then find main from the bunch of hexadecimal code.
 
+[![Screenshot-from-2023-08-21-15-06-26.png](https://i.postimg.cc/QMdGPYrr/Screenshot-from-2023-08-21-15-06-26.png)](https://postimg.cc/v4kNxzBP)
+
+We can see that there are 13 instruction under the main branch. 
+
+Now we are going to compare the number of instructions under main when we run a different command on the terminal.
+
+```riscv64-unknown-elf-gcc -Ofast -mabi=lp64 -march=rv64i -o sum1ton.o sum1ton.c```
+
+Just as we did before, we need to find the assembly level code for our program for which we will run deassmble command again.
+
+```riscv64-unknown-elf-objdump -d sum1ton.o | less```
+
+[![Screenshot-from-2023-08-21-15-29-04.png](https://i.postimg.cc/DwGsbhjx/Screenshot-from-2023-08-21-15-29-04.png)](https://postimg.cc/k2nDk0dS)
+
+We notice that there are 12 instructions in the main branch.
+
+Hence, we can conclude that using Ofast instead of O1 reduces the number of instructions generated.
+
+
+
+
 
 </details>
