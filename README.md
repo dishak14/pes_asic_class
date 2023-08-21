@@ -207,4 +207,50 @@ ABI accesses the system via registers.
 
 IN riscv32 there are 32, 32 bit registers and in risv64 there are 32, 64 bit registers.
 
+## Labwork for Day 2
+
+In this lab we re wrote the sum of n natural numbers C program in ASM language using ABI and check if we still get the same result.
+
+[![Screenshot-from-2023-08-21-22-36-13.png](https://i.postimg.cc/XvnYXFtH/Screenshot-from-2023-08-21-22-36-13.png)](https://postimg.cc/ZWDSM9bp)
+
+### C Program for sum from 1 to 9
+
+```
+#include<stdio.h>
+
+extern int load(int x, int y);
+
+int main(){
+	int result = 0;
+	int count = 9;
+	result = load(0x0, count+1);
+	printf("sum of numbers from 1 to %d is %d\n", count, result);
+}
+```
+### Assembly level program
+
+```
+.section .text
+.global load
+.type load, @function
+
+load:
+	add a4, a0, zero
+	add a2, a0, a1
+	add a3, a0, zero
+loop:	add a4, a3, a4
+	addi a3, a3, 1
+	blt a3, a2, loop
+	add a0, a4, zero
+	ret
+```
+
+## Simulation Result 
+
+[![Screenshot-from-2023-08-21-22-53-17.png](https://i.postimg.cc/sXrnSf3g/Screenshot-from-2023-08-21-22-53-17.png)](https://postimg.cc/4KWbRgKD)
+
+ 
+
+
+
 </details>
