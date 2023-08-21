@@ -143,6 +143,56 @@ Range of numbers in RV64
 
 [![Screenshot-from-2023-08-21-20-53-50.png](https://i.postimg.cc/tRFk2Jdp/Screenshot-from-2023-08-21-20-53-50.png)](https://postimg.cc/xqTLd0F4)
 
+## Lecture 8 
 
+We use two's complement representation to represent negative numbers, i.e. given a decimal number with a negative sign, we convert it to its binary form invert all the bits and add 1. This represents negative number.
+
+For positive numbers, the MSB is 0.
+For negative numbers, the MSB is 1.
+
+Finiding the decimal form of a signed binary number is similar to that of unsigned binary number just that the MSB will be multiplied with (-2^63) and added to the rest.
+
+Or you can do reverse of two's component.
+
+Range is (0 to 2^63-1) positive numbers and -1 to -2^63 in negative numbers.
+
+## Lecture 9 
+
+To find max value of unsigned long long int (double word), we use the following code:
+
+```
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+unsigned long long int max = (unsigned long long int) (pow(2,64)-1);
+printf("highest number represented by unsigned long long int is %llu\n", max);
+return 0;
+}
+```
+
+
+If we run the above program using riscv gcc compiler we get the following result 
+
+[![Screenshot-from-2023-08-21-21-44-56.png](https://i.postimg.cc/B6KKqJxJ/Screenshot-from-2023-08-21-21-44-56.png)](https://postimg.cc/phPTCbGS)
+
+Similarly when we change the assigned unsigned long long int to a negative number and run the above code we get the result as 0.
+
+C Program to find the maximum and minimum value of signed numbers
+
+```
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+long long int max = (long long int) (pow(2,63)-1);
+long long int min = (long long int) (pow(2,63)*(-1));
+printf("max signed long long int is %lld\n", max);
+printf("min signed long long int is %lld\n", min);
+return 0;
+}
+```
+
+[![Screenshot-from-2023-08-21-21-59-12.png](https://i.postimg.cc/3xv9cQqQ/Screenshot-from-2023-08-21-21-59-12.png)](https://postimg.cc/qNp8NS01)
 
 </details>
