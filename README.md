@@ -128,6 +128,21 @@ Basic RISC V keywords :
 * word (w) : 32 bit binary values
 * byte (b) : 8 bit binary values
 
+Using 2 bits we can represent only 4 numbers (0,1,2,3) in binary form.
+
+Using 3 bits we can represent 7 numbers in binary form.
+
+Using 4 bits we can represent 15 numbers in binary form.
+
+Using 64 bits we can represent (2^64 - 1) unsigned positive numbers in binary form.
+
+In case of 64 bit binary number, we multiply the LSB with 2^0 and keep multiplying each digit by 2^n where n increases from 0 to 64 ( MSB being multiplied 2^64) all of this is added and a decimal number is produced.
+
+Range of numbers in RV64 
+
+
+[![Screenshot-from-2023-08-21-20-53-50.png](https://i.postimg.cc/tRFk2Jdp/Screenshot-from-2023-08-21-20-53-50.png)](https://postimg.cc/xqTLd0F4)
+
 
 
 </details>
