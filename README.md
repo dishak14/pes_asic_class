@@ -1,6 +1,8 @@
 # pes_asic_class
 # VLSI PHYSICAL DESIGN FOR ASICs
 
+![image](https://github.com/VardhanSuroshi/pes_asic_class/assets/132068498/33403244-c9dd-4aef-a022-da52e2eef51c)
+
 This repository contains all the notes, lab work and assignments for the course VLSI Physical Design for ASICs, a special topic offered in PES University, Electronic City Campus.
 
 This repo will be divided into different days of the course which will consist of the important points of the lecture as well as the lab work.
