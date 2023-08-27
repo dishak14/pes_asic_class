@@ -251,8 +251,47 @@ loop:	add a4, a3, a4
 
 [![Screenshot-from-2023-08-21-22-53-17.png](https://i.postimg.cc/sXrnSf3g/Screenshot-from-2023-08-21-22-53-17.png)](https://postimg.cc/4KWbRgKD)
 
- 
+ </details>
+
+<details><summary> 
+	RTL Design using Verilog 
+</summary>
+
+<details><summary> Day 1 </summary>
+
+#### Design:
+
+A single or a set of verilog code which is written in order meet certain requirement functionalities.
+
+#### Test Bench:
+
+Pieces of code which are written in order to check if our design code meets the requirement and how accurately it performs its functionalities.
+
+#### Simulator:
+
+A simulator checks the RTL design's adherence to a particular spec with the help of a test bench. eg: IVERILOG is the simulator we are using for this course.
+
+How does a simulator work ?
+
+A simulator checks for the change in inputs and evaluates the corresponding change in its output.
+
+### Simulation flow in iverilog 
+
+Both the design code and the testbench code is fed to iverilog which is our simulator in this case and this simulator checks for changes in input and output is generated, this output will bein the form of a value change dump (vcd) format file, this vcd file is viewed using a gtkwave.
+
+# LAB 1
+
+Create a directory called vsd using ``` mkdir vsd ```.
+
+In that directory git clone the following repoistory ``` git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git```
+
+``` my_lib``` -> contains all the library files. It has two folders 
+* lib which contains sky130 standard cell library. ( used for syntesis)
+* verilog_model which contains all the standard cell verilog models
 
 
+```verilog_files``` contaisn all the source files which we will be using for lab
+
+[![Screenshot-from-2023-08-27-16-53-05.png](https://i.postimg.cc/28xnwpgp/Screenshot-from-2023-08-27-16-53-05.png)](https://postimg.cc/svvBjLVK)
 
 </details>
