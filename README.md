@@ -294,4 +294,26 @@ In that directory git clone the following repoistory ``` git clone https://githu
 
 [![Screenshot-from-2023-08-27-16-53-05.png](https://i.postimg.cc/28xnwpgp/Screenshot-from-2023-08-27-16-53-05.png)](https://postimg.cc/svvBjLVK)
 
+
+# LAB 2
+
+Commands used :
+
+``` cd vsd ```
+
+``` cd sky130RTLDesignAndSynthesisWorkshop ```
+
+``` cd verilog_file ```
+
+``` iverilog good_mux.v tb_good_mux.v ```
+
+``` ./a.out ```
+
+``` gtkwave tb_good_mux.vcd ```
+
+
+[![Screenshot-from-2023-08-27-17-09-57.png](https://i.postimg.cc/yNGdPnVC/Screenshot-from-2023-08-27-17-09-57.png)](https://postimg.cc/bGQpYxDm)
+
+[![Screenshot-from-2023-08-27-17-09-25.png](https://i.postimg.cc/SRkp7zzp/Screenshot-from-2023-08-27-17-09-25.png)](https://postimg.cc/r0nbqsJh)
+
 </details>
