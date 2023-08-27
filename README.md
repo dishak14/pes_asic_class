@@ -326,4 +326,44 @@ Commands used :
 
 [![Screenshot-from-2023-08-27-17-22-09.png](https://i.postimg.cc/3wpL38ty/Screenshot-from-2023-08-27-17-22-09.png)](https://postimg.cc/R3S1RB59)
 
+
+#### Synthesizer
+ Yosys is the synthesizer tool used for converting RTL to netlist( representation of the design in terms of the standard cells in .lib)
+
+```  read_verilog ``` is used to for reading the design code.
+
+``` read_liberty ``` used to read the .lib file.
+
+``` write_verilog ``` to write the netlist file.
+
+##### Verifying the netlist generated
+
+We give the netlist file and the testbench file into the iverilog simulator and a vcd file is generator and the output waveform is generated in gtkwave and this waveform should be same as the output waveform of the rtl.
+
+
+### Logic Synthesis
+
+Behavioural representation of required specifications which is written in verilog HDL language is called as *RTL DESIGN*. RTL to gatelevel transistion is called as Synthesis, this gatelevel synthesis file is called as a netlist. We use .lib for this conversion, .lib consists of all the basic gates like AND, OR , NOT etc.
+
+#### Why do we need different flavors of basic gates ?
+
+In order to make our circuit faster we need the clock frequency to be HIGH, for that we need the time period of the clock to be low and the time period of clock depends on various factors like propogation delay of combinational logic, clock to q delay , setup delay ( in case of flip flops ) and various other delays depending upon the components used. 
+
+This brings a question to our mind that why do we need slow cells at all ?
+
+As we now know that we need faster cells in order to adjust the time period of the clock as low as possible, similarly we need to hold time to prevent hold time issues which again depends on the delays of the components used.
+
+#### Faster vs slower cells
+
+* The digital circuit depends on capacitance.
+* Faster charging or discharging of capacitor => Lesser cell delay => we require wide transisters => more power and area consumption.
+* More cell delay => narrow transistors => less power and area consumption.
+
+Hence, its always a trade-off when it comes to speed vs power and area and we need to guide the synthesizer in such a way that is optimum for our logic circuits based on our constraints.
+
+# LAB 3
+
+
+
+</details>
 </details>
