@@ -393,9 +393,63 @@ To see the netlist code  : ``` gvim good_mux_netlist.v ```
 [![Screenshot-from-2023-08-28-15-18-30.png](https://i.postimg.cc/85Lr5SVM/Screenshot-from-2023-08-28-15-18-30.png)](https://postimg.cc/JD4h6S0z)
 
 
-
-
-
-
 </details>
+
+
+<details><summary> DAY 2 </summary>
+
+# LAB 4
+
+To view the contents in .lib : ``` gvim ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib ```
+
+[![Screenshot-from-2023-08-28-15-39-59.png](https://i.postimg.cc/MGFDCR7H/Screenshot-from-2023-08-28-15-39-59.png)](https://postimg.cc/5H8LvXkW)
+
+The first line in this is the name of the library : ``` library ("sky130_fd_sc_hd__tt_025C_1v80") ```
+
+``` tt ```  => indicates variations due to process and here it indicates Typical Process.
+
+``` 025C ``` => indicates the variations due to temperatures where the silicon will be used.
+
+``` 1v80 ``` => indicates the variations due to the voltage levels where the silicon will be incorporated.
+
+We compare the delay, power and area consumptions of 3 different types of AND gate.
+
+
+# LAB 5
+
+We will be looking at a module called as multiple_module in the verilog_files directory itself. To access the module file we use the following command.
+
+``` gvim multiple_modules.v ```
+
+
+And we get the source file of multiple_module.v which contains a simple OR gate as the first submodule and a simple AND gate as the second submodule, a module called multiple_module connects these two.
+
+
+[![Screenshot-from-2023-08-28-16-02-42.png](https://i.postimg.cc/vTjYVG63/Screenshot-from-2023-08-28-16-02-42.png)](https://postimg.cc/30XQM51v)
+
+Using ``` read_verilog multiple_modules.v ``` and ``` synth -top multiple_modules ``` , we get the following report.
+
+[![Screenshot-from-2023-08-28-16-10-31.png](https://i.postimg.cc/qMyYHkv0/Screenshot-from-2023-08-28-16-10-31.png)](https://postimg.cc/KRcQnhTs)
+
+generate netlist using : ``` abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib```
+
+ use ``` show multiple_modules ``` in order to see the netlist pictorically.
+
+ [![Screenshot-from-2023-08-28-16-16-02.png](https://i.postimg.cc/3x6nkVR9/Screenshot-from-2023-08-28-16-16-02.png)](https://postimg.cc/yDmF5f0S)
+
+ Ideally we are expected to see , an AND gate and an OR gate here but we see U1 and U2 instead this shows that this is a hierarchial model.
+
+ ``` write_verilog -noattr multiple_modules_hier.v ```
+
+``` !gvim multiple_modules_hier.v ```
+
+[![Screenshot-from-2023-08-28-16-25-20.png](https://i.postimg.cc/pX6ntnq5/Screenshot-from-2023-08-28-16-25-20.png)](https://postimg.cc/HVbLwjGT)
+
+ 
+
+ 
+
+ 
+</details>
+
 </details>
