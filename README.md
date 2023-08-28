@@ -363,6 +363,38 @@ Hence, its always a trade-off when it comes to speed vs power and area and we ne
 
 # LAB 3
 
+To go to the required directory where all our source files are there, we use the following command :
+
+``` cd vsd sky130RTLDesignAndSynthesisWorkshop verilog_files ``` 
+
+To start yosys (our synthesizer) just type ``` yosys ``` and yosys promt is generated.
+
+For reading the library : ``` read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib ```
+
+For reading the design ``` read_verilog good_mux.v ```
+
+[![Screenshot-from-2023-08-28-15-01-03.png](https://i.postimg.cc/fb9JyKfd/Screenshot-from-2023-08-28-15-01-03.png)](https://postimg.cc/NyQgPRVG)
+
+For synthesizing a design : ``` synth -top good_mux ```
+
+[![Screenshot-from-2023-08-28-15-02-13.png](https://i.postimg.cc/DZNj67bH/Screenshot-from-2023-08-28-15-02-13.png)](https://postimg.cc/zbnFXZ7F)
+
+
+For generating netlist : ``` abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib ```
+
+[![Screenshot-from-2023-08-28-15-03-15.png](https://i.postimg.cc/fT8KfznK/Screenshot-from-2023-08-28-15-03-15.png)](https://postimg.cc/rKtx8Lp0)
+
+Type ``` show ``` in order to see the netlist pictorically 
+
+[![Screenshot-from-2023-08-28-15-05-21.png](https://i.postimg.cc/pLxmr81c/Screenshot-from-2023-08-28-15-05-21.png)](https://postimg.cc/ykQ1rJK0)
+
+To see the netlist code  : ``` gvim good_mux_netlist.v ```
+
+[![Screenshot-from-2023-08-28-15-18-30.png](https://i.postimg.cc/85Lr5SVM/Screenshot-from-2023-08-28-15-18-30.png)](https://postimg.cc/JD4h6S0z)
+
+
+
+
 
 
 </details>
