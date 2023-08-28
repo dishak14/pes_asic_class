@@ -445,7 +445,32 @@ generate netlist using : ``` abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.l
 
 [![Screenshot-from-2023-08-28-16-25-20.png](https://i.postimg.cc/pX6ntnq5/Screenshot-from-2023-08-28-16-25-20.png)](https://postimg.cc/HVbLwjGT)
 
- 
+
+### Flattened model :
+ * Opposite of hierarchal model
+ * The modular organization is not preserved.
+ * All the modules and the submodules will be flattened out into *ONE* single module.
+
+   ```read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib```
+   
+   ```read_verilog multiple_modules.v```
+
+   ```synth -top multiple_modules```
+
+   ```abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib```
+
+   ``` flatten ``` to write out a flattened netlist.
+
+   ``` show ```
+
+
+   [![Screenshot-from-2023-08-28-16-33-24.png](https://i.postimg.cc/13YG3jBB/Screenshot-from-2023-08-28-16-33-24.png)](https://postimg.cc/tsWZrDLn)
+
+ ``` write_verilog -noattr multiple_modules_flat.v ```
+
+``` !gvim multiple_modules_flat.v ```
+
+[![Screenshot-from-2023-08-28-16-37-14.png](https://i.postimg.cc/63H2M7P0/Screenshot-from-2023-08-28-16-37-14.png)](https://postimg.cc/phFLTdRh)
 
  
 
