@@ -472,7 +472,28 @@ generate netlist using : ``` abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.l
 
 [![Screenshot-from-2023-08-28-16-37-14.png](https://i.postimg.cc/63H2M7P0/Screenshot-from-2023-08-28-16-37-14.png)](https://postimg.cc/phFLTdRh)
 
- 
+
+# FLOPS
+
+Each combinational circuit has a certain propgation delay, this propogation delay tends to cause glitches. These glitches can sometimes be ignored but as and when the number of combinational circuit block increases these glitches tend to become a bigger problem. That is when we use flip flops. FF is a sequential circuit whose output Q doesnt change unless clock edge occurs. This means that even if input of FF is glitching the output generated will be stable which acts as a stable input for the next block of combinational circuit block.
+
+
+# LAB 6
+
+asynchronous reset on gtk wave 
+
+```iverilog dff_asyncres.v tb_dff_asyncres.v```
+
+```./a.out```
+
+```gtkwave tb_dff_asyncres.vcd ```
+
+[![Screenshot-from-2023-09-01-16-28-10.png](https://i.postimg.cc/MTz7HgmT/Screenshot-from-2023-09-01-16-28-10.png)](https://postimg.cc/R3b6bs85)
+
+In this we notice that everytime async reset changes value the output q changes becase d changes.
+
+
+
 
  
 </details>
