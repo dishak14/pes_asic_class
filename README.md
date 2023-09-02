@@ -719,6 +719,76 @@ Use the same commands used for displaying the gate level diagram of opt_check bu
 
 # LAB 9
 
+### dff_const1
+
+``` gvim dff_const1.v ```
+
+[![Screenshot-from-2023-09-02-14-19-46.png](https://i.postimg.cc/BQc3DtwP/Screenshot-from-2023-09-02-14-19-46.png)](https://postimg.cc/TpwBv2xT)
+
+When reset is 1 the output q will become 0 but this happens only at the pos edge of clock, similarly when reset =0 the output 1 will become 1 not immediately but at the pos edge of clock.
+
+#### simulation
+
+``` iverilog dff_const1.v tb_dff_const1.v ```
+
+```./a.out ```
+
+``` gtkwave tb_dff_const1.vcd ```
+
+[![Screenshot-from-2023-09-02-14-24-25.png](https://i.postimg.cc/522wWYhw/Screenshot-from-2023-09-02-14-24-25.png)](https://postimg.cc/jLBWz5d5)
+
+
+#### synthesis 
+
+```read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib```
+
+```read_verilog dff_const1.v```
+
+```synth -top dff_const1```
+
+```dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib ```
+
+```abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib```
+
+```show```
+
+[![Screenshot-from-2023-09-02-14-39-49.png](https://i.postimg.cc/8kr2SsRf/Screenshot-from-2023-09-02-14-39-49.png)](https://postimg.cc/w3gf5qb9)
+
+
+
+### dff_const2
+
+``` gvim dff_const2.v```
+
+[![Screenshot-from-2023-09-02-14-43-56.png](https://i.postimg.cc/XY0G8Z8f/Screenshot-from-2023-09-02-14-43-56.png)](https://postimg.cc/F7DHFHwz)
+
+The output q will always be 1 irrespective of the clock or reset value.
+
+#### Simulation
+
+[![Screenshot-from-2023-09-02-14-45-51.png](https://i.postimg.cc/26J7G42k/Screenshot-from-2023-09-02-14-45-51.png)](https://postimg.cc/wyXNTRCZ)
+
+#### Synthesis 
+
+[![Screenshot-from-2023-09-02-14-47-46.png](https://i.postimg.cc/K8wcZjqK/Screenshot-from-2023-09-02-14-47-46.png)](https://postimg.cc/Wdmc8NPj)
+
+
+### dff_const3
+
+
+```gvim dff_const3.v ```
+
+[![Screenshot-from-2023-09-02-14-51-05.png](https://i.postimg.cc/RZrb4z1S/Screenshot-from-2023-09-02-14-51-05.png)](https://postimg.cc/SJrGf3t3)
+
+
+#### Simulation
+
+[![Screenshot-from-2023-09-02-14-58-08.png](https://i.postimg.cc/JnPZYjxD/Screenshot-from-2023-09-02-14-58-08.png)](https://postimg.cc/vgx4cgpb)
+
+#### Synthesis
+
+[![Screenshot-from-2023-09-02-14-59-58.png](https://i.postimg.cc/jS3j1ZYr/Screenshot-from-2023-09-02-14-59-58.png)](https://postimg.cc/LJfRYksy)
+
 
 
 
