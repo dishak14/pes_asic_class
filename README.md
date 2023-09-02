@@ -480,7 +480,7 @@ Each combinational circuit has a certain propgation delay, this propogation dela
 
 # LAB 6
 
-asynchronous reset on gtk wave 
+## asynchronous reset on gtk wave 
 
 ```iverilog dff_asyncres.v tb_dff_asyncres.v```
 
@@ -488,14 +488,162 @@ asynchronous reset on gtk wave
 
 ```gtkwave tb_dff_asyncres.vcd ```
 
-[![Screenshot-from-2023-09-01-16-28-10.png](https://i.postimg.cc/MTz7HgmT/Screenshot-from-2023-09-01-16-28-10.png)](https://postimg.cc/R3b6bs85)
+[![Screenshot-from-2023-09-02-08-58-42.png](https://i.postimg.cc/gkKBTxtZ/Screenshot-from-2023-09-02-08-58-42.png)](https://postimg.cc/ykkPJ8H1)
 
-In this we notice that everytime async reset changes value the output q changes becase d changes.
+when asyncres goes LOW, there is no immediate change in the output q, q waits for the pos edge of the clock in order to change after which the output q depends on the changes in input d and the pos edge of the clock.
+
+[![Screenshot-from-2023-09-02-09-06-35.png](https://i.postimg.cc/SRbkDnTP/Screenshot-from-2023-09-02-09-06-35.png)](https://postimg.cc/Ppygq5kb)
+
+
+Similarly, when asyncres again goes HIGH, the output q does not depend on the pos edge of the clock or the input d, it automatically goes LOW and stays there until there is a change in asyncres.
+
+[![Screenshot-from-2023-09-02-09-06-35.png](https://i.postimg.cc/SRbkDnTP/Screenshot-from-2023-09-02-09-06-35.png)](https://postimg.cc/Ppygq5kb)
+
+In this code we can see that, the waveform generated in gtkwave coincides with the code written. 
+
+* ```  if(asyncres) q<=0 ```
+This makes the output q go *LOW* everytime asyncres is *HIGH*.
+
+
+* ``` else q<=d; ```
+This makes the output q follow d at every pos edge of clock when asyncres is *LOW*.
+
+### Synthesis 
+
+``` yosys ```
+
+``` read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib ```
+
+``` read_verilog dff_asyncres.v ```
+
+``` synth -top dff_asyncres ```
+
+``` dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib ```  dfflibmap is a keyword for d flip flops.
+
+``` abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib ```
+
+``` show ```
+
+[![Screenshot-from-2023-09-02-10-30-21.png](https://i.postimg.cc/0jS0DyrZ/Screenshot-from-2023-09-02-10-30-21.png)](https://postimg.cc/K3ZTyFPg)
+
+
+
+## Asynchronous set on gtk wave 
+
+``` iverilog dff_async_set.v tb_dff_async_set.v ```
+
+``` ./a.out ```
+
+``` gtkwave tb_dff_async_set.vcd ```
+
+[![Screenshot-from-2023-09-02-09-25-03.png](https://i.postimg.cc/W3YTc91Q/Screenshot-from-2023-09-02-09-25-03.png)](https://postimg.cc/dkCz8jdB)
+
+when async_set goes LOW, there is no immediate change in the output q, q waits for the pos edge of the clock in order to change after which the output q depends on the changes in input d and the pos edge of the clock.
+
+[![Screenshot-from-2023-09-02-09-27-41.png](https://i.postimg.cc/Kc7CTpbF/Screenshot-from-2023-09-02-09-27-41.png)](https://postimg.cc/5j0Pd3jk)
+
+
+Similarly, when async_set again goes HIGH, the output q does not depend on the pos edge of the clock or the input d, it automatically goes HIGH and stays there until there is a change in async_set.
+
+[![Screenshot-from-2023-09-02-09-29-50.png](https://i.postimg.cc/wMx2LV5T/Screenshot-from-2023-09-02-09-29-50.png)](https://postimg.cc/gX53P3Bf)
+
+In this code we can see that, the waveform generated in gtkwave coincides with the code written. 
+
+* ```  if(async_set) q<=1 ```
+This makes the output q go *HIGH* everytime async_set is *HIGH*.
+
+
+* ``` else q<=d; ```
+This makes the output q follow d at every pos edge of clock when async_set is *LOW*.
+
+### Synthesis
+
+Use the same commands with a different module name as done in asynchronous reset flip flop synthesis and we get the following netlist.
+
+[![Screenshot-from-2023-09-02-10-36-11.png](https://i.postimg.cc/vTx3hv2r/Screenshot-from-2023-09-02-10-36-11.png)](https://postimg.cc/m1RY27sk)
 
 
 
 
- 
+## Synchronous reset on gtk wave 
+
+``` iverilog dff_syncres.v tb_dff_syncres.v ```
+
+``` ./a.out ```
+
+``` gtkwave tb_dff_syncres.vcd ```
+
+
+[![Screenshot-from-2023-09-02-09-58-53.png](https://i.postimg.cc/vBmTFxbS/Screenshot-from-2023-09-02-09-58-53.png)](https://postimg.cc/KKdxtzKn)
+
+When sync_reset goes HIGH, output q doesnt immediately go LOW as it did in async reset flip flop, contrastingly it actually waits for the pos edge of clock in order for the output q to go low (does not depend on d).
+
+
+[![Screenshot-from-2023-09-02-10-05-19.png](https://i.postimg.cc/k4jcqS8V/Screenshot-from-2023-09-02-10-05-19.png)](https://postimg.cc/DJXsc8xF)
+
+When sync_reset goes LOW, the output q waits for the pos edge of the clock in order to follow the input d.
+
+
+[![Screenshot-from-2023-09-02-10-09-14.png](https://i.postimg.cc/65ZSw969/Screenshot-from-2023-09-02-10-09-14.png)](https://postimg.cc/pp2kJMn7)
+
+This code shows that we go into the always block and check the condition/ value of sync_res only and only if there is a posedge of clock which means that all the changes of output q only happens where there is a pos edge of clock even though changes in reset might happen at a diff time, the output q waits for the pos edge of clock in order to show any changes.
+
+### Synthesis 
+
+Use the same commands with a different module name as done in asynchronous reset flip flop synthesis and we get the following netlist.
+
+[![Screenshot-from-2023-09-02-10-44-41.png](https://i.postimg.cc/FHYCHNVW/Screenshot-from-2023-09-02-10-44-41.png)](https://postimg.cc/FYQVPtq3)
+
+
+# LAB 7
+
+## mult_2
+
+``` gvim mult_2.v ```
+
+[![Screenshot-from-2023-09-02-10-57-17.png](https://i.postimg.cc/mgr3bjBT/Screenshot-from-2023-09-02-10-57-17.png)](https://postimg.cc/F72kpjY6)
+
+When we write the truth table for the following code, we realise that in order to multiply any number by 2, we can just use a logical left shift operator (append the number with 1'b0) instead of using a multiplier.
+
+``` yosys ```
+
+``` read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib ```
+
+``` read_verilog mult_2.v ```
+
+``` synth -top mul2 ```
+
+[![Screenshot-from-2023-09-02-11-01-35.png](https://i.postimg.cc/43PTzXj6/Screenshot-from-2023-09-02-11-01-35.png)](https://postimg.cc/CZRt0ph5)
+
+As there are no memory, no cells used. We can skip the abc command and directly type ``` show ```.
+
+[![Screenshot-from-2023-09-02-11-02-55.png](https://i.postimg.cc/7YSP5rPV/Screenshot-from-2023-09-02-11-02-55.png)](https://postimg.cc/mt2WnqHz)
+
+
+## mult_8
+
+``` gvim mult_8.v ```
+
+[![Screenshot-from-2023-09-02-11-23-01.png](https://i.postimg.cc/W419Lcb8/Screenshot-from-2023-09-02-11-23-01.png)](https://postimg.cc/LJGkL7Pg)
+
+The output is multiplied by 9 and not 8 in this , because a(8+1) = (a*8 + a*1).
+
+use the same commands as the previous mult_2.v and the following is generated.
+
+[![Screenshot-from-2023-09-02-11-27-24.png](https://i.postimg.cc/DwLWvSmy/Screenshot-from-2023-09-02-11-27-24.png)](https://postimg.cc/QFNNSxpR)
+
+``` write_verilog -noattr mult8_net.v ```
+
+``` !gvim mult8_net.v ```
+
+[![Screenshot-from-2023-09-02-11-31-21.png](https://i.postimg.cc/65YKdwSL/Screenshot-from-2023-09-02-11-31-21.png)](https://postimg.cc/svQbzF3v)
+
+
 </details>
 
+
+<details><summary> DAY 3 </summary>  
+
+
+</details>
 </details>
