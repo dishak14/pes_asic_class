@@ -644,6 +644,87 @@ use the same commands as the previous mult_2.v and the following is generated.
 
 <details><summary> DAY 3 </summary>  
 
+# LAB 8
+
+### opt_check 
+
+``` gvim opt_check.v ```
+
+[![Screenshot-from-2023-09-02-12-43-08.png](https://i.postimg.cc/DyHnBG1f/Screenshot-from-2023-09-02-12-43-08.png)](https://postimg.cc/WhGB4h9x)
+
+This is a 2:1 mux, i.e. when a=1 y=b and when a=0 y=0. 
+Boolean expression : y=a'0+ab when you simplify it you get y=ab (implementation of a 2 input AND gate using a 2:1 MUX).
+
+```read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib ```
+
+``` read_verilog opt_check.v ```
+
+``` synth -top opt_check ``` 
+
+``` opt_clean -purge ``` : removes all the unused wires and cells
+
+``` abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib ```
+
+``` show ```
+
+
+[![Screenshot-from-2023-09-02-13-04-21.png](https://i.postimg.cc/MGzksXyh/Screenshot-from-2023-09-02-13-04-21.png)](https://postimg.cc/K1psjGpN)
+
+### opt_check2
+
+[![Screenshot-from-2023-09-02-12-50-08.png](https://i.postimg.cc/P5GTQ3LF/Screenshot-from-2023-09-02-12-50-08.png)](https://postimg.cc/SJGByGfW)
+
+This is a 2:1 mux, i.e. when a=1 y=1 and when a=0 y=b
+Boolean expression : y=a1+a'b= a+a'b= a+b (using absorbtion law).
+
+Use the same commands used for displaying the gate level diagram of opt_check but with a different module name.
+
+[![Screenshot-from-2023-09-02-13-07-32.png](https://i.postimg.cc/3xS6Z9xD/Screenshot-from-2023-09-02-13-07-32.png)](https://postimg.cc/QF708Q5X)
+
+
+### opt_check3
+
+
+[![Screenshot-from-2023-09-02-13-35-13.png](https://i.postimg.cc/pT0GxJmt/Screenshot-from-2023-09-02-13-35-13.png)](https://postimg.cc/Q9TkJ5g6)
+
+This code is for two 2:1 mux where when a=1 y= output of another mux (where c=1 y=b and c=0 y=0) and when a=0 y=0.
+
+Boolean expression : y= a(cb+c'0)+a'0 = abc (3 input AND gate)
+
+Use the same commands used for displaying the gate level diagram of opt_check but with a different module name.
+
+[![Screenshot-from-2023-09-02-13-45-16.png](https://i.postimg.cc/wjgs98LD/Screenshot-from-2023-09-02-13-45-16.png)](https://postimg.cc/fJqbvPHb)
+
+
+
+### opt_check4
+
+[![Screenshot-from-2023-09-02-13-49-30.png](https://i.postimg.cc/Bby9M03k/Screenshot-from-2023-09-02-13-49-30.png)](https://postimg.cc/p5D6L3pJ)
+
+Boolean expression : y= a(b(ac)+b'c)+(a'c') on simplification we get y= ac+a'c' = a xor c.
+
+
+Use the same commands used for displaying the gate level diagram of opt_check but with a different module name.
+
+[![Screenshot-from-2023-09-02-13-54-17.png](https://i.postimg.cc/x1NHsyv4/Screenshot-from-2023-09-02-13-54-17.png)](https://postimg.cc/xXYc8mFv)
+
+### multiple_module_opt
+
+[![Screenshot-from-2023-09-02-13-56-38.png](https://i.postimg.cc/ryWwYn3W/Screenshot-from-2023-09-02-13-56-38.png)](https://postimg.cc/RqSmWRMV)
+
+Use the same commands used for displaying the gate level diagram of opt_check but with a different module name and ``` flatten ``` .
+
+[![Screenshot-from-2023-09-02-13-59-54.png](https://i.postimg.cc/X7kFt7mw/Screenshot-from-2023-09-02-13-59-54.png)](https://postimg.cc/GH9Hyrc2)
+
+
+# LAB 9
+
+
+
+
+
+
+
 
 </details>
 </details>
