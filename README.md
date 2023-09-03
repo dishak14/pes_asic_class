@@ -789,12 +789,120 @@ The output q will always be 1 irrespective of the clock or reset value.
 
 [![Screenshot-from-2023-09-02-14-59-58.png](https://i.postimg.cc/jS3j1ZYr/Screenshot-from-2023-09-02-14-59-58.png)](https://postimg.cc/LJfRYksy)
 
+### dff_const4
+
+[![Screenshot-from-2023-09-03-17-30-49.png](https://i.postimg.cc/43TjrHcG/Screenshot-from-2023-09-03-17-30-49.png)](https://postimg.cc/CRmv81Jr)
+
+#### Simulation
+
+[![Screenshot-from-2023-09-03-17-33-25.png](https://i.postimg.cc/5tSvmD1J/Screenshot-from-2023-09-03-17-33-25.png)](https://postimg.cc/QBVH84HY)
+
+
+#### Synthesis 
+
+[![Screenshot-from-2023-09-03-17-35-35.png](https://i.postimg.cc/hP8mLfBw/Screenshot-from-2023-09-03-17-35-35.png)](https://postimg.cc/0bQrx5rd)
+
+
+
+# LAB 10
+
+### counter_opt
+
+``` gvim counter_opt.v ```
+
+[![Screenshot-from-2023-09-03-17-37-51.png](https://i.postimg.cc/h414MxX9/Screenshot-from-2023-09-03-17-37-51.png)](https://postimg.cc/mhhGgPND)
+
+This is code of a 3 bit counter where when reset is 1, the variable count goes back to 000 and if reset is not equal to 1 the variable count is incremented. The output q is assigned t the zeroeth bit of the variable count which means that the first and the second bit of the variable count is unused. We expect a three flip flop design but only find one flip flop in the design indicating that the count[1] and count[2] flip flops are unused.
+
+
+    ```read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib```
+    
+    ```read_verilog counter_opt.v```
+    
+    ```synth -top counter_opt```
+    
+    ```dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib```
+    
+    ```abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib```
+    
+    ```show```
+
+
+
+[![Screenshot-from-2023-09-03-17-48-57.png](https://i.postimg.cc/CxLWYnLp/Screenshot-from-2023-09-03-17-48-57.png)](https://postimg.cc/svqn4XhT)
+
+
+
+# counter_opt2
+
+``` gvim counter_opt2 ```
+
+[![Screenshot-from-2023-09-03-17-51-46.png](https://i.postimg.cc/Fs1y495n/Screenshot-from-2023-09-03-17-51-46.png)](https://postimg.cc/2VRbdN54)
+
+In this all the three bits of the variable counter are used hence we can expect three flip flops.
+
+[![Screenshot-from-2023-09-03-17-56-03.png](https://i.postimg.cc/8kZY4Pmy/Screenshot-from-2023-09-03-17-56-03.png)](https://postimg.cc/XXyx7WhF)
+
+</details>
+
+<details><summary> DAY 4 </summary>
+
+# LAB 11
+
+``` gvim ternary_operator.v```
+
+[![Screenshot-from-2023-09-03-19-30-37.png](https://i.postimg.cc/2j9nwT0Z/Screenshot-from-2023-09-03-19-30-37.png)](https://postimg.cc/XXFZNKSj)
+
+``` iverilog ternary_operator_mux.v tb_ternary_operator_mux.v ```
+
+```./a.out ```
+
+``` gtkwave tb_ternary_operator_mux.vcd```
+
+[![Screenshot-from-2023-09-03-19-34-15.png](https://i.postimg.cc/m2Rh79sH/Screenshot-from-2023-09-03-19-34-15.png)](https://postimg.cc/K4qZ2R4G)
+
+Behaviour of a 2:1 mux.
+
+
+    ```read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib```
+    
+    ```read_verilog ternary_operator_mux.v```
+    
+    ```synth -top ternary_operator_mux```
+    
+    ```abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib```
+    
+    ```show```
+
+
+[![Screenshot-from-2023-09-03-19-40-04.png](https://i.postimg.cc/tCVDnL9T/Screenshot-from-2023-09-03-19-40-04.png)](https://postimg.cc/svs5tHQd)
+
+
+```iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v ternary_operator_mux_net.v tb_ternary_operator_mux.v```
+
+```./a.out```
+
+``` gtkwave tb_ternary_operator_mux.vcd```
+
+### bad_mux
+
+```gvim bad_mux.v ```
+
+[![Screenshot-from-2023-09-03-19-46-05.png](https://i.postimg.cc/RV736RJf/Screenshot-from-2023-09-03-19-46-05.png)](https://postimg.cc/BXvZR2gQ)
+
+[![Screenshot-from-2023-09-03-19-47-57.png](https://i.postimg.cc/QCkXtfYd/Screenshot-from-2023-09-03-19-47-57.png)](https://postimg.cc/RJhrpLzk)
+
+[![Screenshot-from-2023-09-03-19-50-16.png](https://i.postimg.cc/kGhTxmp1/Screenshot-from-2023-09-03-19-50-16.png)](https://postimg.cc/n9BKJ6ZB)
+
+[![Screenshot-from-2023-09-03-19-51-48.png](https://i.postimg.cc/c4nRDwg4/Screenshot-from-2023-09-03-19-51-48.png)](https://postimg.cc/3d30NyFP)
 
 
 
 
+[![Screenshot-from-2023-09-03-19-44-27.png](https://i.postimg.cc/Z56WNL9p/Screenshot-from-2023-09-03-19-44-27.png)](https://postimg.cc/zyXDZKFG)
 
 
 
+Similuator works on activity i.e. only change in input causes change in output.
 </details>
 </details>
