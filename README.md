@@ -906,3 +906,11 @@ Behaviour of a 2:1 mux.
 Similuator works on activity i.e. only change in input causes change in output.
 </details>
 </details>
+
+<details><summary>Advanced Physical Design using OPENLANE/SKY130 </summary>
+
+<details><summary>DAY1 </summary></details>
+
+
+
+</details>
