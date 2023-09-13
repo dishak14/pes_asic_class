@@ -963,6 +963,13 @@ Similuator works on activity i.e. only change in input causes change in output.
 ![astohardware](https://github.com/dishak14/pes_asic_class/assets/92496153/58705226-b6f7-4046-9d3d-eec3df602e0a)
 
 
+# Simplified RTL2GDS flow
+
+
+![rtl2gds](https://github.com/dishak14/pes_asic_class/assets/92496153/f62e4831-34f5-442d-be3b-0c2b4cd61c00)
+
+
+
 
 
 
