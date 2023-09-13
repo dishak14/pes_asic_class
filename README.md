@@ -936,8 +936,50 @@ Similuator works on activity i.e. only change in input causes change in output.
 
 
 
+# Introduction to RISC V
+
+* RISC V is an Instruction Set Architecture.
+
+* It is language of the computer i.e. we can interact with the computer using RISC V.
+
+* C program --> RISC V assembly level code --> HDL --> RTL --> runs on layout.
+
+
+![riscvss](https://github.com/dishak14/pes_asic_class/assets/92496153/70fa2db2-d2c9-4005-814d-73156995f273)
+
+
+# From software application to Hardware 
+
+* Application software enters into a block called system software.
+
+* System software consists of various blocks:
+ 
+1. Operatin system : which deals with the input/output operations, handles memory.
+2. Compiler : converts the high level language into assembly level instructions.
+3. Assembler : converts the assembly level instruction to binary which is known as the machine level code.
+
+* After all this our application software will be ready to run on a hardware.
+
+![astohardware](https://github.com/dishak14/pes_asic_class/assets/92496153/58705226-b6f7-4046-9d3d-eec3df602e0a)
+
+
+
+
+
 
   
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
